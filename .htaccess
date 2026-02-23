@@ -1,0 +1,26 @@
+##Rewrite Engine on code - MUST BE ACTIVE for rewrites##
+Options +FollowSymLinks
+RewriteEngine on
+
+##Block Index Display##
+Options All -Indexes
+
+## Redirect index to root 
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.php\ HTTP/ 
+RewriteRule ^(.*)index\.php$ /$1 [R=301,L]
+
+##Set Default Index Files (Recourses)
+DirectoryIndex server.php
+
+## Disable Server signature ##
+ServerSignature Off
+
+# Redirect Trailing Slashes If Not A Folder...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+# Send Requests To Front Controller...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /public/index.php [NC,L,QSA]

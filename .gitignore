@@ -1,0 +1,14 @@
+/node_modules
+composer.lock
+package-lock.json
+/vendor
+.env
+.env.local
+.env.*.local
+.idea
+.vscode
+.DS_Store
+Thumbs.db
+dist/
+build/
+package-lock.json

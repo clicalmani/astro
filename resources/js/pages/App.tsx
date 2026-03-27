@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { FaArrowRight, FaBolt, FaCode, FaCodeBranch, FaGithub, FaPaperPlane, FaPlus, FaReact, FaRocket, FaTwitter } from "react-icons/fa";
-import { FaShield, FaShieldHalved } from "react-icons/fa6";
+import { FaArrowRight, FaBolt, FaCodeBranch, FaGithub, FaPaperPlane, FaPlus, FaReact, FaRocket, FaTwitter } from "react-icons/fa";
+import { FaShieldHalved } from "react-icons/fa6";
 
-export default function Home() {
+export default function App() {
 
     const codeSnippet = `<span class="text-primary">
                             import</span> { Elegant } <span class="text-primary">from</span> <span class="text-success">'driftql-react'</span>;

@@ -148,7 +148,7 @@ Configure which routes are visible to the frontend and apply access policies.
 return [
     'only' => [
         ['name' => 'home', 'policy' => null],
-        ['name' => 'admin.*', 'policy' => \App\Policies\AdminPolicy::class],
+        ['name' => 'admin.*', 'policy' => \App\Contracts\DriftQL\AdminPolicy::class],
     ],
 ];
 ```
@@ -169,9 +169,9 @@ npm run build
 
 ## 📚 Learn More
 
-*   **[Tonka Framework Docs](#)**: Learn about the backend.
-*   **[DriftQL Docs](#)**: Master the frontend ORM.
-*   **[Tonka Router Docs](#)**: Understand dynamic routing.
+*   **[Tonka Framework Docs](https://clicalmani.github.io/tonka)**: Learn about the backend.
+*   **[DriftQL Docs](https://github.com/clicalmani/driftql-react)**: Master the frontend ORM.
+*   **[Tonka Router Docs](https://github.com/clicalmani/tonka-router)**: Understand dynamic routing.
 *   **[InertiaJS Docs](https://inertiajs.com)**: Learn the client-side protocol.
 
 ## 📝 License

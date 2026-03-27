@@ -26,6 +26,6 @@ return [
     */
 
     'builders' => [
-        // Add your custom builders here ...
+        \Tonka\DriftQL\RouteBuilder::class
     ]
 ];

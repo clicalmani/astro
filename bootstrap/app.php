@@ -15,12 +15,21 @@
 
 use Clicalmani\Foundation\Http\Middlewares\Middleware;
 use Clicalmani\Foundation\Maker\Application;
+use Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator;
 
 return Application::setup(rootPath: dirname(__DIR__))
             ->withService(static function(Application $app) {
                 $app->addService('inertia', [
                     \Inertia\Response::class
                 ]);
+                $app->addService('smtp.mailer.transport', [\Clicalmani\Foundation\Mail\MailerTransport::class]);
+                $app->addService(
+                    'smtp.mailer', 
+                    [
+                        \Clicalmani\Foundation\Mail\Mailer::class,
+                        static fn(ServiceConfigurator|DefaultsConfigurator $config) => $config->args([$app->dependency('service', 'smtp.mailer.transport')])
+                    ]);
             })
             ->withMiddleware(function(Middleware $middleware) {
                 $middleware->web(append: [\Inertia\Middleware::class]);

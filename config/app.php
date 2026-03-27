@@ -139,6 +139,9 @@ return [
         Clicalmani\Foundation\Providers\RouteServiceProvider::class,
         Clicalmani\Foundation\Providers\LogServiceProvider::class,
         Clicalmani\Foundation\Providers\ValidationServiceProvider::class,
+        Inertia\InertiaServiceProvider::class,
+        Tonka\Spark\SparkServiceProvider::class,
+        Tonka\DriftQL\DriftQLServiceProvider::class,
         
         /*
          * Application Service Providers...

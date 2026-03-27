@@ -11,7 +11,7 @@ return [
      * the relationships between tables. If you set this option to false, foreign key checks will be disabled, 
      * which can lead to potential data integrity issues if not used carefully. It is generally recommended
      */
-    'strict' => true,
+    'strict' => false,
 
     /*
     |--------------------------------------------------------------------------

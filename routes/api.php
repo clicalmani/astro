@@ -25,4 +25,4 @@ use Clicalmani\Foundation\Support\Facades\Route;
  * By default a token life duration is set to 1 day (24 hours), this behavior can be change and set to whatever you want.
  * 
  */
-Route::middleware('tokenizer');
+Route::middleware('cookie');

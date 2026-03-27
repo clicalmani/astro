@@ -12,3 +12,6 @@ Thumbs.db
 dist/
 build/
 package-lock.json
+tsconfig.tsbuildinfo
+tsconfig.node.tsbuildinfo
+*.log

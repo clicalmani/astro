@@ -5,7 +5,11 @@
  * |----------------------------------------------------------------
  * | Auto Loader
  * |----------------------------------------------------------------
+ * Configure the auto loader for the application. This will automatically
+ * load the necessary classes when they are needed, without the need for
+ * manual inclusion.
  */
+
 require __DIR__.'/vendor/autoload.php';
 
 (require_once __DIR__ . '/bootstrap/app.php')

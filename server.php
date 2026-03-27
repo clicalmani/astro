@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * |----------------------------------------------------------------
+ * | Static File Server
+ * |----------------------------------------------------------------
+ * This script serves static files directly when they exist, bypassing
+ * the main application logic for improved performance. 
+ * It checks if the requested URI corresponds to a file in the 'public'
+ * directory and serves it with the correct MIME type.
+ */
+
 $mime_types = [
     'css' => 'text/css',
     'gif' => 'image/gif',
@@ -10,30 +21,31 @@ $mime_types = [
     'js' => 'text/javascript',
     'json' => 'application/json',
     'mjs' => 'text/javascript',
+    'ts' => 'text/javascript',
+    'tsx' => 'text/javascript',
     'png' => 'image/png',
     'pdf' => 'application/pdf',
+    'svg' => 'image/svg+xml', 
     'xhtml' => 'application/xhtml+xml',
 ];
 
-$uri = urldecode(
+ $url = urldecode(
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
 
-if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
+ $file = __DIR__ . '/public' . $url;
 
-    /**
-     * This line has been tested and work on development
-     * Not tested on production. May be it should be commented on production
-     * because there is a try and catch which did the same thing in public/index.php. 
-     * If there is no conflict we can keep it.
-     */
-    $file = __DIR__.'/public' . $uri;
+if ($url !== '/' && is_file($file)) {
+    
     $ext = pathinfo($file, PATHINFO_EXTENSION);
-    header('Content-Type: ' . @$mime_types[$ext] ?? mime_content_type($file)); // Only content type is needed the remaining headers will be guest by the browser
-    include $file;
+    $mime = $mime_types[$ext] ?? 'application/octet-stream';
 
-    // We should exit to end the file transfer process
+    header('Content-Type: ' . $mime);
+    header('Content-Length: ' . filesize($file));
+    
+    readfile($file);
+    
     exit;
 }
 
-require_once __DIR__.'/public/index.php';
+require_once __DIR__ . '/public/index.php';

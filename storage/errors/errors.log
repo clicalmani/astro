@@ -1,0 +1,21 @@
+[27-Mar-2026 14:15:15 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier """ in C:\Users\WORKSPACE\Documents\astro\vendor\inertia\tonka-adapter\src\TemplateTags\Vite.php:43
+Stack trace:
+#0 C:\Users\WORKSPACE\Documents\astro\vendor\inertia\tonka-adapter\src\TemplateTags\Vite.php(43): sprintf('<script type="m...', 'http://localhos...', 'resources/js/ma...', 'http://localhos...', 'resources/sass/...')
+#1 [internal function]: Inertia\TemplateTags\Vite->render(Array)
+#2 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Resources\TemplateTag.php(24): preg_replace_callback('/@vite\\s*\\(\\s*(...', Array, '<!DOCTYPE html>...')
+#3 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Resources\TemplateLoader.php(102): Clicalmani\Foundation\Resources\TemplateTag->bind('<!DOCTYPE html>...')
+#4 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Resources\TemplateLoader.php(26): Clicalmani\Foundation\Resources\TemplateLoader->getContent('C:\\Users\\WORKSP...')
+#5 C:\Users\WORKSPACE\Documents\astro\vendor\twig\twig\src\Environment.php(407): Clicalmani\Foundation\Resources\TemplateLoader->getSourceContext('app')
+#6 C:\Users\WORKSPACE\Documents\astro\vendor\twig\twig\src\Environment.php(370): Twig\Environment->loadTemplate('__TwigTemplate_...', 'app')
+#7 C:\Users\WORKSPACE\Documents\astro\vendor\twig\twig\src\Environment.php(333): Twig\Environment->load('app')
+#8 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Resources\View.php(40): Twig\Environment->render('app', Array)
+#9 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Resources\View.php(84): Clicalmani\Foundation\Resources\View->render()
+#10 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\psr\src\Stream.php(238): Clicalmani\Foundation\Resources\View->__toString()
+#11 C:\Users\WORKSPACE\Documents\astro\vendor\inertia\tonka-adapter\src\Response.php(55): Clicalmani\Psr\Stream->write(Object(Clicalmani\Foundation\Resources\View))
+#12 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Http\Controllers\RequestController.php(93): Inertia\Response->__toString()
+#13 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Support\Facades\Facade.php(39): Clicalmani\Foundation\Http\Controllers\RequestController->render()
+#14 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Maker\Application.php(141): Clicalmani\Foundation\Support\Facades\Facade::__callStatic('render', Array)
+#15 C:\Users\WORKSPACE\Documents\astro\public\index.php(12): Clicalmani\Foundation\Maker\Application->handleRequest()
+#16 C:\Users\WORKSPACE\Documents\astro\server.php(51): require_once('C:\\Users\\WORKSP...')
+#17 {main}
+  thrown in C:\Users\WORKSPACE\Documents\astro\vendor\inertia\tonka-adapter\src\TemplateTags\Vite.php on line 43

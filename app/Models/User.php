@@ -10,7 +10,7 @@ class User extends Model
      *
      * @var string $table Table name
      */
-    protected $table = "users";
+    protected $table = "users u";
 
     /**
      * Model entity
@@ -25,7 +25,11 @@ class User extends Model
      *
      * @var string|array $primary_keys Table primary key.
      */
-    protected $primaryKey = "id";
+    protected $primaryKey = "u.id";
+
+    protected $hidden = ['password', 'login_count', 'state'];
+
+    protected $custom = ['role', 'hash'];
 
     /**
      * Constructor 
@@ -35,5 +39,20 @@ class User extends Model
     public function __construct(mixed $id = null)
     {
         parent::__construct($id);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function getRoleAttribute()
+    {
+        return 'admin';
+    }
+
+    public function getHashAttribute()
+    {
+        return create_parameters_hash(['profile' => $this->id]);
     }
 }

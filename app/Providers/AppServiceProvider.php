@@ -1,7 +1,9 @@
 <?php
 namespace App\Providers;
 
+use Clicalmani\Foundation\Http\RequestInterface;
 use Clicalmani\Foundation\Providers\ServiceProvider;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // ...
+        Inertia::share(static function(RequestInterface $request) {
+            return [
+                // ...
+            ];
+        });
     }
 }

@@ -15,14 +15,20 @@ class Authenticator extends Middleware
      * @param \Closure $next Next middleware function
      * @return \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
      */
-    public function handle(RequestInterface $request, ResponseInterface $response, callable $next) : \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
+    public function handle(RequestInterface $request, ResponseInterface $response, \Closure $next) : \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
     {
         if ($user = $request->user()) {
-            if (false === $user->isOnline()) return redirect()->route('login');
-            else $user->authenticate(); // Renew user authentication
+            if ($user->isAuthenticated() && false === $user->isOnline()) {
+                $user->destroy();
+                return redirect()->route('home');
+            }
+
+            $user->authenticate(); // Renew user authentication
+
+            return $next();
         }
 
-        return $next();
+        return redirect()->route('home');
     }
 
     /**
@@ -32,8 +38,6 @@ class Authenticator extends Middleware
      */
     public function boot() : void
     {
-        /**
-         * TODO
-         */
+        $this->include('auth');
     }
 }

@@ -1,0 +1,151 @@
+/* --- MODAL DESIGN (GRID STYLE) --- */
+.custom-modal .modal-content {
+    border-radius: 24px;
+    border: none;
+}
+
+.modal-header-custom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 16px; border-bottom: 1px solid #F3F4F6;
+}
+
+.modal-body-custom {
+    padding: 20px 0;
+    background-color: #F9FAFB;
+    height: calc(100vh - 200px); /* Hauteur dynamique */
+    display: flex; flex-direction: column;
+}
+
+.modal-actions-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 24px;
+}
+
+.modules-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Grille fluide */
+    gap: 16px;
+    padding-bottom: 16px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* --- MODULE GRID CARD STYLE --- */
+.module-card-grid {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative; /* Pour le positionnement de l'icône */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.module-card-grid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #D1D5DB;
+}
+
+.module-card-grid.checked {
+    border: 2px solid #4F46E5; /* Bordure épaisse quand coché */
+    background-color: #EEF2FF;
+}
+
+.card-content {
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center;
+    background: #F3F4F4;
+    transition: color 0.2s;
+}
+
+.module-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: center;
+}
+
+.status-badge {
+    margin-top: auto;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 99px;
+    background-color: #E0E7FF;
+    color: #4338ca;
+    text-align: center;
+}
+
+/* Checkbox Custom dans le Modal (Grande version Tactile) */
+.custom-checkbox {
+    width: 28px; 
+    height: 28px; 
+    border: 2px solid #D1D5DB; 
+    background-color: white; 
+    border-radius: 8px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    transition: all 0.2s; 
+    flex-shrink: 0;
+}
+
+.custom-checkbox:hover {
+    border-color: #4F46E5;
+    background-color: #F9FAFB;
+}
+
+.custom-checkbox.checked {
+    background-color: #4F46E5;
+    border-color: #4F46E5;
+}
+
+.check-icon {
+    color: white; 
+    font-size: 14px; 
+    display: none;
+    animation: popIn 0.2s;
+}
+
+.custom-checkbox.checked .check-icon {
+    display: block;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Mobile Responsive Modal */
+@media (max-width: 768px) {
+    .sidebar { display: none; } 
+    .main-wrapper { margin-left: 0; width: 100%; }
+    .header-bar { padding: 16px; }
+    .content-scroll { padding: 16px; }
+    .content-scroll h1 { font-size: 1.5rem; }
+    .welcome-banner { padding: 24px; }
+    .search-input-group { width: 100%; }
+    .modules-grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur mobile */
+        gap: 12px;
+    }
+    .module-card-grid { height: auto; min-height: 120px; }
+}

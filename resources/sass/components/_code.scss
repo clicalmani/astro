@@ -1,0 +1,24 @@
+//
+// Code
+//
+
+.code-editor {
+    background-color: $darker;
+    border-radius: 1rem;
+    border: 1px solid $gray-700;
+    position: relative;
+    
+    .code-dots {
+        display: flex;
+        gap: 0.5rem;
+        padding: 1rem;
+        border-bottom: 1px solid $gray-700;
+        margin-bottom: 1rem;
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+    }
+}

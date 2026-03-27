@@ -1,22 +1,19 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tonka from 'tonka-vite-plugin';
 
 // https://vite.dev/config/
 export default defineConfig({
-  build: {
-      outDir: "dist",
-      assetsDir: "assets",
-      rollupOptions: {
-        input: {
-            app: "resources/js/main.tsx",
-        }
-      }
-  },
-  plugins: [react()],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./public', import.meta.url))
-    }
-  }
-})
+    plugins: [
+        tonka({
+            input: ['resources/sass/app.scss', 'resources/js/main.tsx'],
+            
+            // SSR (Server-Side Rendering)
+            ssr: false,
+            
+            // HMR: Hot Module Replacement
+            refresh: true,
+        }),
+        react(),
+    ],
+});

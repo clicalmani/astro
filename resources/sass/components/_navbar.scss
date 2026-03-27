@@ -1,0 +1,27 @@
+// 
+// Navbar
+//
+
+.navbar {
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+    -webkit-backdrop-filter: blur(12px); // Préfixe pour compatibilité
+    backdrop-filter: blur(12px);
+    z-index: 1050;
+}
+
+.navbar.scrolled {
+    background: rgba(15, 23, 42, 0.95); // Slate 900
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); // A thin dividing line
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); // Soft shade
+    padding-top: 1rem !important;       // Slightly increase the padding
+    padding-bottom: 1rem !important;
+    
+    // We exaggerate the blur for the glass effect
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+.navbar-collapse {
+    position: relative;
+    z-index: 1060; 
+}

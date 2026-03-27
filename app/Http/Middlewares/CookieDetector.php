@@ -1,11 +1,11 @@
 <?php
 namespace App\Http\Middlewares;
 
-use Clicalmani\Foundation\Http\Middlewares\JWTAuth;
+use Clicalmani\Foundation\Http\Middlewares\Middleware;
 use Clicalmani\Foundation\Http\RequestInterface;
 use Clicalmani\Foundation\Http\ResponseInterface;
 
-class Tokenizer extends JWTAuth 
+class CookieDetector extends Middleware 
 {
     /**
      * Handler
@@ -15,9 +15,14 @@ class Tokenizer extends JWTAuth
      * @param \Closure $next Next middleware function
      * @return \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
      */
-    public function handle(RequestInterface $request, ResponseInterface $response, callable $next) : \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
+    public function handle(RequestInterface $request, ResponseInterface $response, \Closure $next) : \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
     {
-        if (false !== $this->verifyToken($request->bearerToken())) return $next();
+        if ($session_id = $request->cookie()->get('_SESSION_COOKIE')) {
+            $session = new \Clicalmani\Foundation\Http\Session\DBSessionHandler(false, ['driver' => 'mysql', 'table' => env('DB_TABLE_PREFIX') . 'sessions']);
+            $session->open('/', $session_id);
+            
+            if ($session->validate_sid($session_id)) return $next();
+        }
         
         return $response->unauthorized();
     }
@@ -29,8 +34,6 @@ class Tokenizer extends JWTAuth
      */
     public function boot() : void
     {
-        /**
-         * TODO
-         */
+        $this->include('cookie');
     }
 }

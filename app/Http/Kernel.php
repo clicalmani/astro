@@ -25,7 +25,7 @@ class Kernel extends HttpKernel
          * Register here your custom middlewares for web gateway.
          */
         'web' => [
-            // Add here your custom middlewares
+            'tokenizer' => \App\Http\Middlewares\Authenticator::class
         ],
 
         /**
@@ -38,7 +38,7 @@ class Kernel extends HttpKernel
          * Register here your custom middlewares for api gateway.
          */
         'api' => [
-            // Add here your custom middlewares
+            'cookie' => \App\Http\Middlewares\CookieDetector::class 
         ]
     ];
 

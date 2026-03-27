@@ -5,7 +5,7 @@ use Clicalmani\Foundation\Providers\SessionStorageServiceProvider as SessionProv
 
 class SessionServiceProvider extends SessionProvider
 {
-    protected static $driver = \Clicalmani\Foundation\Http\Session\FileSessionHandler::class;
+    protected static $driver = \Clicalmani\Foundation\Http\Session\DBSessionHandler::class;
 
     /**
      * Here you may specify the number of seconds that you wish the session
@@ -13,7 +13,7 @@ class SessionServiceProvider extends SessionProvider
      * 
      * @var int
      */
-    protected static $lifetime = 300;
+    protected static $lifetime = 18000;
 
     /**
      * Here you may specify the maximum number of seconds that you wish the session
@@ -21,7 +21,7 @@ class SessionServiceProvider extends SessionProvider
      * 
      * @var int
      */
-    protected static $max_lifetime = 900;
+    protected static $max_lifetime = 3600;
 
     /**
      * If you want session to immediately expire on the browser closing, set that option.

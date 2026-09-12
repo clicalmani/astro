@@ -3,55 +3,71 @@ namespace App\Models;
 
 use Clicalmani\Foundation\Acme\Model;
 
+/**
+ * Class User
+ *
+ * Model representing user accounts, handling authorization roles, parameter hashes,
+ * and mapping to the underlying users database entity.
+ *
+ * @package App\Models
+ * @author Clicalmani
+ */
 class User extends Model
 {
     /**
-     * Model database table 
+     * Associated database table name with default alias.
      *
-     * @var string $table Table name
+     * @var string Table name
      */
-    protected $table = "users u";
+    protected string $table = "users AS u";
 
     /**
-     * Model entity
+     * Fully qualified class name of the associated entity.
      * 
-     * @var string
+     * @var string Entity class
      */
     protected string $entity = \Database\Entities\UserEntity::class;
 
     /**
-     * Table primary key(s)
-     * Use an array if the key is composed with more than one attributes.
+     * Primary key(s) for the table.
      *
-     * @var string|array $primary_keys Table primary key.
+     * @var string|array Primary key attribute name or composite keys array
      */
-    protected $primaryKey = "u.id";
-
-    protected $hidden = ['password', 'login_count', 'state'];
-
-    protected $custom = ['role', 'hash'];
+    protected string|array $primaryKey = "id";
 
     /**
-     * Constructor 
+     * Attributes hidden from array or JSON serialized representations.
+     * 
+     * @var array
+     */
+    protected array $hidden = ['password', 'login_count', 'state'];
+
+    /**
+     * User model constructor.
      *
-     * @param mixed $id
+     * @param mixed $id Optional primary key value to load model record
      */
     public function __construct(mixed $id = null)
     {
         parent::__construct($id);
     }
 
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
-    }
-
-    public function getRoleAttribute()
+    /**
+     * Retrieve the authorization role assigned to the user.
+     * 
+     * @return string User role identifier
+     */
+    public function role(): string
     {
         return 'admin';
     }
 
-    public function getHashAttribute()
+    /**
+     * Generate a parameter hash representing the user profile instance.
+     * 
+     * @return string Hashed parameters payload
+     */
+    public function hash(): string
     {
         return create_parameters_hash(['profile' => $this->id]);
     }

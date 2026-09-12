@@ -5,14 +5,23 @@ use Clicalmani\Foundation\Http\Middlewares\Middleware;
 use Clicalmani\Foundation\Http\RequestInterface;
 use Clicalmani\Foundation\Http\ResponseInterface;
 
+/**
+ * Class Authenticator
+ *
+ * Middleware responsible for verifying user authentication status, 
+ * renewing sliding sessions, and redirecting unauthenticated requests.
+ *
+ * @package App\Http\Middlewares
+ * @author Clicalmani
+ */
 class Authenticator extends Middleware 
 {
     /**
-     * Handler
+     * Handle an incoming request through the authentication lifecycle.
      * 
-     * @param \Clicalmani\Foundation\Http\Requests\RequestInterface $request Request object
-     * @param \Clicalmani\Foundation\Http\ResponseInterface $response Response object
-     * @param \Closure $next Next middleware function
+     * @param \Clicalmani\Foundation\Http\RequestInterface $request Incoming HTTP request instance.
+     * @param \Clicalmani\Foundation\Http\ResponseInterface $response Outgoing HTTP response instance.
+     * @param \Closure $next Next middleware callback in the pipeline.
      * @return \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
      */
     public function handle(RequestInterface $request, ResponseInterface $response, \Closure $next) : \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
@@ -23,7 +32,7 @@ class Authenticator extends Middleware
                 return redirect()->route('home');
             }
 
-            $user->authenticate(); // Renew user authentication
+            $user->authenticate(); // Renew session sliding expiration
 
             return $next();
         }
@@ -32,7 +41,7 @@ class Authenticator extends Middleware
     }
 
     /**
-     * Bootstrap
+     * Bootstrap middleware dependencies and include global authentication routines.
      * 
      * @return void
      */

@@ -8,6 +8,22 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clicalmani/astro.git"
+  },
+  "keywords": [
+    "PHP",
+    "Tonka",
+    "Astro",
+    "InertiaJs",
+    "ReactJs",
+    "GraphQL",
+    "ORM",
+    "Framework",
+    "data-fetching",
+    "state-management"
+  ],
   "dependencies": {
     "@fullcalendar/daygrid": "^6.1.20",
     "@fullcalendar/interaction": "^6.1.20",
@@ -30,5 +46,25 @@
     "sass": "=1.70.0",
     "typescript": "~5.9.3",
     "vite": "^7.2.4"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "author": {
+    "name": "clicalmani",
+    "email": "clicalmani@gmail.com",
+    "url": "https://github.com/clicalmani"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clicalmani/astro/issues",
+    "email": "clicalmani@gmail.com"
+  },
+  "homepage": "https://github.com/clicalmani/astro#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/clicalmani"
   }
 }

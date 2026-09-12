@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "allowJs": false,
+    "allowJs": true,
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -24,10 +24,10 @@
     /* Base path */
     // "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./resources/js/*"]
     }
   },
-  "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx"],
+  "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx", "test/setup.ts"],
   "references": [
     { "path": "./tsconfig.node.json" }
   ]

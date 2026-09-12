@@ -5,20 +5,29 @@ use Clicalmani\Foundation\Http\RequestInterface;
 use Clicalmani\Foundation\Providers\ServiceProvider;
 use Inertia\Inertia;
 
+/**
+ * Class AppServiceProvider
+ *
+ * Core application service provider responsible for registering framework services,
+ * bootstrapping global resources, and sharing shared data across Inertia components.
+ *
+ * @package App\Providers
+ * @author Clicalmani
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register
+     * Register application services and container bindings.
      * 
      * @return void
      */
-    public function register() : void
+    public function register(): void
     {
         // ...
     }
 
     /**
-     * Bootstrap
+     * Bootstrap application services and configure global Inertia shared props.
      * 
      * @return void
      */
@@ -26,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Inertia::share(static function(RequestInterface $request) {
             return [
-                // ...
+                // Global shared data across Inertia views
             ];
         });
     }

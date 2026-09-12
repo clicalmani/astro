@@ -45,22 +45,6 @@ return [
             'password' => env('MAIL_PASSWORD')
         ],
 
-        'postmark' => [
-            'schema' => 'postmark+smtp',
-            'host' => 'default',
-            'port' => null,
-            'username' => 'ID',
-            'password' => null
-        ],
-
-        'resend' => [
-            'schema' => 'resend+smtp',
-            'host' => 'default',
-            'port' => null,
-            'username' => 'resend',
-            'password' => 'API_KEY'
-        ],
-
         'sendmail' => [
             'schema' => 'sendmail',
             'host' => 'default',
@@ -99,5 +83,19 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
-    ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Envoi asynchrone via Messenger
+    |--------------------------------------------------------------------------
+    |
+    | Si activé, les emails ne seront pas envoyés directement au transport
+    | mais poussés sur le bus Messenger (service "messenger"). Nécessite
+    | que le MessengerServiceProvider soit enregistré et configuré.
+    |
+    */
+    'queue' => [
+        'enabled' => env('MAIL_QUEUE', false),
+    ],
 ];

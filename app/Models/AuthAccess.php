@@ -3,34 +3,42 @@ namespace App\Models;
 
 use Clicalmani\Foundation\Acme\Model;
 
+/**
+ * Class AuthAccess
+ *
+ * Represents the AuthAccess database model and entity mapping for managing
+ * user authentication tokens and access records.
+ *
+ * @package App\Models
+ * @author Clicalmani
+ */
 class AuthAccess extends Model
 {
     /**
-     * Model database table 
+     * Associated database table name with default alias.
      *
-     * @var string $table Table name
+     * @var string Table name
      */
-    protected $table = "auth_access";
+    protected string $table = "auth_access AS a";
 
     /**
-     * Model entity
+     * Fully qualified class name of the associated entity.
      * 
-     * @var string
+     * @var string Entity class
      */
     protected string $entity = \Database\Entities\AuthAccessEntity::class;
 
     /**
-     * Table primary key(s)
-     * Use an array if the key is composed with more than one attributes.
+     * Primary key(s) for the table.
      *
-     * @var string|array $primary_keys Table primary key.
+     * @var string|array Primary key attribute name or composite keys array
      */
-    protected $primaryKey = "id";
+    protected string|array $primaryKey = "id";
 
     /**
-     * Constructor 
+     * AuthAccess constructor.
      *
-     * @param mixed $id
+     * @param mixed $id Optional primary key value to load model record
      */
     public function __construct(mixed $id = null)
     {

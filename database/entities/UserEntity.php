@@ -61,4 +61,14 @@ class UserEntity extends Entity
         unsigned: true
     )]
     public TinyInt|int $login_count = 0;
+
+    // ── Custom Properties ──────────────────────────────────────────────────────
+
+    public string $role {
+        get => $this->model->role;
+    }
+
+    public string $hash {
+        get => $this->model->hash;
+    }
 }

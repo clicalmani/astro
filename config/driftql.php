@@ -27,7 +27,6 @@ return [
     'whitelist' => [
         'allowed_models' => [
             \App\Models\User::class,
-            // Note : \App\Models\Admin n'est pas ici, donc inaccessible par cette route
         ],
     ],
 
@@ -62,7 +61,20 @@ return [
                 'operator' => '=',
                 'value' => 'current_user_id',
             ],
+
+            // 'store' => \App\Http\Requests\UserUpdateRequest::class,
+
+            // 'password_verify' => \App\Http\Requests\UserUpdateRequest::class,
         ],
+
+        /**
+         * |--------------------------------------------------------------------------
+         * | MODEL-POLICY FOR STORAGE OPERATIONS
+         * |--------------------------------------------------------------------------
+         * Defines the Request class that handles authorization and validation for "store", 
+         * "update", or "destroy" operations on each model.
+         */
+        
     ],
 
     /*

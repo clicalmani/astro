@@ -1,7 +1,6 @@
 <?php 
 namespace Database\Seeders;
 
-use App\Models\Company;
 use App\Models\User;
 use Clicalmani\Database\Factory\Priority;
 use Clicalmani\Database\Seeders\Seeder;

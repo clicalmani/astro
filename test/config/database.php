@@ -9,7 +9,7 @@ return [
      * This option determines whether foreign key checks are enabled for the database connection.
      * Enabling foreign key checks ensures that the integrity of your database is maintained by enforcing
      * the relationships between tables. If you set this option to false, foreign key checks will be disabled, 
-     * which can lead to potential data integrity issues if not used carefully. It is generally recommended
+     * which can lead to potential data integrity issues if not used carefully.
      */
     'strict' => false,
 
@@ -75,6 +75,38 @@ return [
             'collation' => 'utf8mb4_unicode_520_ci',
             'prefix'    => env('DB_TABLE_PREFIX', ''),
             'engine'    => null
+        ],
+
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'default',
+            'engine' => null,
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'search_path' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'SQL_Latin1_General_CP1_CI_AS',
+            'engine' => null,
+            'prefix' => '',
+            'prefix_indexes' => true,
         ],
     ]
 ];

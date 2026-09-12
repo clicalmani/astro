@@ -10,15 +10,15 @@ return [
     */
     'only' => [
         [
-            'name' => 'home',
+            'name' => 'login',
             'policy' => null
         ],
         [
-            'name' => 'workspace',
-            'policy' => \App\Contracts\Spark\WorkspaceContract::class
+            'name' => 'logout',
+            'policy' => null
         ],
         [
-            'name' => 'users.*',
+            'name' => 'home',
             'policy' => null
         ],
     ],
@@ -29,10 +29,10 @@ return [
     |--------------------------------------------------------------------------
     | If you prefer to expose everything EXCEPT specific routes.
     */
-    // 'except' => [
-    //     'admin.*',
-    //     'horizon.*',
-    // ],
+    'except' => [
+        'admin.*',
+        'horizon.*',
+    ],
 
     /*
     |--------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 <?php
 namespace App\Providers;
 
-use Clicalmani\Foundation\Providers\CacheServiceProvider as Base;
+use Clicalmani\Core\Providers\CacheServiceProvider as Base;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
 use Override;

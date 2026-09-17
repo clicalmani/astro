@@ -1,8 +1,8 @@
 <?php
 namespace App\Providers;
 
-use Clicalmani\Foundation\Http\RequestInterface;
-use Clicalmani\Foundation\Providers\ServiceProvider;
+use Clicalmani\Core\Http\RequestInterface;
+use Clicalmani\Core\Providers\ServiceProvider;
 use Inertia\Inertia;
 
 /**

@@ -1,0 +1,16 @@
+/* resources/css/app.css */
+@import "tailwindcss";
+
+@theme {
+  /* Polices */
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Couleurs "tonka" */
+  --color-tonka-50: #fffbeb;
+  --color-tonka-100: #fef3c7;
+  --color-tonka-500: #f59e0b; /* Amber */
+  --color-tonka-600: #d97706;
+  --color-tonka-700: #b45309;
+  --color-tonka-900: #451a03;
+}

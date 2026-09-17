@@ -1,7 +1,7 @@
 <?php 
 namespace App\Models;
 
-use Clicalmani\Foundation\Acme\Model;
+use Clicalmani\Core\Acme\Model;
 
 /**
  * Class User

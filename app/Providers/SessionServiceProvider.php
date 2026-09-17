@@ -1,7 +1,7 @@
 <?php
 namespace App\Providers;
 
-use Clicalmani\Foundation\Providers\SessionStorageServiceProvider as SessionProvider;
+use Clicalmani\Core\Providers\SessionStorageServiceProvider as SessionProvider;
 
 /**
  * Class SessionServiceProvider
@@ -19,7 +19,7 @@ class SessionServiceProvider extends SessionProvider
      * 
      * @var string
      */
-    protected static string $driver = \Clicalmani\Foundation\Http\Session\FileSessionHandler::class;
+    protected static string $driver = \Clicalmani\Core\Http\Session\FileSessionHandler::class;
 
     /**
      * The number of seconds a session is allowed to remain idle before expiring.

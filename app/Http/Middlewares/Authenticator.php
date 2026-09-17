@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Middlewares;
 
-use Clicalmani\Foundation\Http\Middlewares\Middleware;
-use Clicalmani\Foundation\Http\RequestInterface;
-use Clicalmani\Foundation\Http\ResponseInterface;
+use Clicalmani\Core\Http\Middlewares\Middleware;
+use Clicalmani\Core\Http\RequestInterface;
+use Clicalmani\Core\Http\ResponseInterface;
 
 /**
  * Class Authenticator
@@ -19,12 +19,12 @@ class Authenticator extends Middleware
     /**
      * Handle an incoming request through the authentication lifecycle.
      * 
-     * @param \Clicalmani\Foundation\Http\RequestInterface $request Incoming HTTP request instance.
-     * @param \Clicalmani\Foundation\Http\ResponseInterface $response Outgoing HTTP response instance.
+     * @param \Clicalmani\Core\Http\RequestInterface $request Incoming HTTP request instance.
+     * @param \Clicalmani\Core\Http\ResponseInterface $response Outgoing HTTP response instance.
      * @param \Closure $next Next middleware callback in the pipeline.
-     * @return \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
+     * @return \Clicalmani\Core\Http\ResponseInterface|\Clicalmani\Core\Http\RedirectInterface
      */
-    public function handle(RequestInterface $request, ResponseInterface $response, \Closure $next) : \Clicalmani\Foundation\Http\ResponseInterface|\Clicalmani\Foundation\Http\RedirectInterface
+    public function handle(RequestInterface $request, ResponseInterface $response, \Closure $next) : \Clicalmani\Core\Http\ResponseInterface|\Clicalmani\Core\Http\RedirectInterface
     {
         if ($user = $request->user()) {
             if ($user->isAuthenticated() && false === $user->isOnline()) {

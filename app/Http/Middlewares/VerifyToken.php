@@ -1,21 +1,21 @@
 <?php
 namespace App\Http\Middlewares;
 
-use Clicalmani\Foundation\Http\Middlewares\Middleware;
-use Clicalmani\Foundation\Http\RequestInterface;
-use Clicalmani\Foundation\Http\ResponseInterface;
+use Clicalmani\Core\Http\Middlewares\Middleware;
+use Clicalmani\Core\Http\RequestInterface;
+use Clicalmani\Core\Http\ResponseInterface;
 
 class VerifyToken extends Middleware 
 {
     /**
      * Handler
      * 
-     * @param \Clicalmani\Foundation\Http\RequestInterface $request Current RequestInterface; object
-     * @param \Clicalmani\Foundation\Http\ResponseInterface $response Http response
+     * @param \Clicalmani\Core\Http\RequestInterface $request Current RequestInterface; object
+     * @param \Clicalmani\Core\Http\ResponseInterface $response Http response
      * @param \Closure $next 
-     * @return \Clicalmani\Foundation\Http\Response|\Clicalmani\Foundation\Http\RedirectInterface
+     * @return \Clicalmani\Core\Http\Response|\Clicalmani\Core\Http\RedirectInterface
      */
-    public function handle(RequestInterface $request, ResponseInterface $response, \Closure $next) : \Clicalmani\Foundation\Http\Response|\Clicalmani\Foundation\Http\RedirectInterface
+    public function handle(RequestInterface $request, ResponseInterface $response, \Closure $next) : \Clicalmani\Core\Http\Response|\Clicalmani\Core\Http\RedirectInterface
     {
         if ($payload = verify_token($request->token)) {
             $request->payload = $payload;

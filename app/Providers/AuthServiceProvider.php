@@ -2,9 +2,9 @@
 namespace App\Providers;
 
 use App\Models\AuthAccess;
-use Clicalmani\Foundation\Auth\Authenticate;
-use Clicalmani\Foundation\Http\RequestInterface;
-use Clicalmani\Foundation\Support\Facades\DB;
+use Clicalmani\Core\Auth\Authenticate;
+use Clicalmani\Core\Http\RequestInterface;
+use Clicalmani\Core\Support\Facades\DB;
 
 /**
  * Class AuthServiceProvider

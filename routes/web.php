@@ -1,7 +1,7 @@
 <?php
 
-use Clicalmani\Foundation\Http\RequestInterface;
-use Clicalmani\Foundation\Support\Facades\Route;
+use Clicalmani\Core\Http\RequestInterface;
+use Clicalmani\Core\Support\Facades\Route;
 
 /**
  * |-------------------------------------------------------------------------------

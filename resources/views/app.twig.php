@@ -6,7 +6,7 @@
         <title>Inertia – TONKA Astro</title>
 		<meta charset="utf-8" />
         @reactRefresh
-        @vite("main.tsx")
+        @vite('resources/css/app.css', 'resources/js/main.tsx')
         @inertiaHead
     </head>
     <body class="fs-6">

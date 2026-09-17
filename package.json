@@ -30,13 +30,14 @@
     "@fullcalendar/list": "^6.1.20",
     "@fullcalendar/react": "^6.1.20",
     "@inertiajs/react": "^2.3.15",
+    "@tailwindcss/vite": "^4.3.3",
     "bootstrap": "^5.3.8",
     "driftql-react": "^1.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.6.0",
     "tonka-router": "^1.10.0",
-    "tonka-vite-plugin": "^1.32.0"
+    "tonka-vite-plugin": "^1.32.7"
   },
   "devDependencies": {
     "@types/node": "^25.3.5",

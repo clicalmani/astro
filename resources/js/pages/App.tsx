@@ -48,16 +48,13 @@ export default function App() {
     useEffect(() => {
         const handleScroll = () => {
             const navbar = document.querySelector('.navbar');
-
             if (window.scrollY > 50) {
                 navbar?.classList.add('scrolled');
             } else {
                 navbar?.classList.remove('scrolled');
             }
         };
-
         window.addEventListener('scroll', handleScroll);
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -70,14 +67,11 @@ export default function App() {
     useEffect(() => {
         const el = codeScrollRef.current;
         if (!el) return;
-
         let animationId: number;
         const speed = 0.4;
-
         const step = () => {
             if (el && !isPausedRef.current) {
                 const maxScroll = el.scrollHeight - el.clientHeight;
-
                 if (maxScroll > 0) {
                     if (el.scrollTop >= maxScroll) {
                         el.scrollTop = 0;
@@ -88,14 +82,12 @@ export default function App() {
             }
             animationId = requestAnimationFrame(step);
         };
-
         animationId = requestAnimationFrame(step);
-
         return () => cancelAnimationFrame(animationId);
     }, []);
 
     return (
-        <div className="tonka-landing">
+        <div className="tonka-landing min-h-screen">
             <style>{`
                 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -121,10 +113,6 @@ export default function App() {
                 }
 
                 .tonka-landing .ff-ms { font-family: 'JetBrains Mono', monospace; }
-                .tonka-landing .text-muted { color: var(--muted) !important; }
-                .tonka-landing .bg-darker { background: var(--surface); }
-                .tonka-landing .bg-dark { background: var(--ink); }
-                .tonka-landing a { color: inherit; }
 
                 /* --- Navbar --- */
                 .tonka-landing .navbar {
@@ -139,54 +127,8 @@ export default function App() {
                     border-bottom-color: var(--line);
                     padding: 0.85rem 0;
                 }
-                .tonka-landing .navbar-brand {
-                    font-family: 'Space Grotesk', sans-serif;
-                    font-size: 1.15rem;
-                    letter-spacing: 0.01em;
-                }
-                .tonka-landing .nav-link {
-                    color: var(--muted);
-                    font-size: 0.95rem;
-                    transition: color .2s ease;
-                }
-                .tonka-landing .nav-link:hover { color: var(--text); }
 
-                /* --- Buttons --- */
-                .tonka-landing .btn { border-radius: 8px; font-weight: 500; font-size: 0.95rem; }
-                .tonka-landing .btn-primary {
-                    background: var(--gold);
-                    border-color: var(--gold);
-                    color: var(--ink);
-                    font-weight: 600;
-                }
-                .tonka-landing .btn-primary:hover {
-                    background: #f2b158;
-                    border-color: #f2b158;
-                    color: var(--ink);
-                }
-                .tonka-landing .btn-outline-light {
-                    border: 1px solid var(--line);
-                    color: var(--text);
-                }
-                .tonka-landing .btn-outline-light:hover {
-                    background: rgba(241, 237, 228, 0.04);
-                    border-color: rgba(241, 237, 228, 0.25);
-                    color: var(--text);
-                }
-
-                /* --- Hero --- */
-                .tonka-landing .eyebrow-badge {
-                    display: inline-flex;
-                    align-items: center;
-                    border: 1px solid var(--line);
-                    background: var(--gold-soft);
-                    color: var(--gold);
-                    font-family: 'JetBrains Mono', monospace;
-                    font-size: 0.8rem;
-                }
-                .tonka-landing .hero-title { font-size: clamp(2.4rem, 4.2vw, 3.4rem); line-height: 1.08; }
-                .tonka-landing .hero-title .accent { color: var(--gold); }
-
+                /* --- Constellation --- */
                 .tonka-landing .constellation {
                     position: relative;
                     width: 100%;
@@ -216,103 +158,57 @@ export default function App() {
                 .tonka-landing .constellation-node img { width: 44px; height: 44px; }
                 .tonka-landing .constellation-node.left { top: 18px; left: 8%; }
                 .tonka-landing .constellation-node.right { bottom: 18px; right: 8%; }
-                .tonka-landing .constellation-label {
-                    position: absolute;
-                    font-family: 'JetBrains Mono', monospace;
-                    font-size: 0.7rem;
-                    color: var(--muted);
-                }
 
-                /* --- Code panel --- */
-                .tonka-landing .code-editor {
-                    background: var(--surface);
-                    border: 1px solid var(--line);
-                    border-radius: 12px;
-                    overflow: hidden;
-                }
-                .tonka-landing .code-dots {
-                    display: flex;
-                    align-items: center;
-                    gap: 6px;
-                    padding: 0.85rem 1rem;
-                    border-bottom: 1px solid var(--line);
-                }
-                .tonka-landing .code-dots .dot { width: 10px; height: 10px; border-radius: 50%; }
-                .tonka-landing .code-scroll {
-                    background: var(--surface);
-                    font-size: 0.85rem;
-                    line-height: 1.65;
-                }
+                /* --- Code scrollbar --- */
                 .code-scroll::-webkit-scrollbar { width: 8px; }
                 .code-scroll::-webkit-scrollbar-track { background: transparent; }
                 .code-scroll::-webkit-scrollbar-thumb { background-color: rgba(241, 237, 228, 0.12); border-radius: 4px; }
                 .code-scroll::-webkit-scrollbar-thumb:hover { background-color: rgba(241, 237, 228, 0.22); }
                 .code-scroll { scrollbar-width: thin; scrollbar-color: rgba(241, 237, 228, 0.12) transparent; }
-
-                .tonka-landing .benefit-row { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
-                .tonka-landing .benefit-row:last-child { border-bottom: none; }
-                .tonka-landing .benefit-icon { color: var(--gold); flex-shrink: 0; }
-
-                /* --- Features --- */
-                .tonka-landing .feature-col {
-                    padding: 0 1.75rem;
-                    border-left: 1px solid var(--line);
-                }
-                .tonka-landing .feature-col:first-child { border-left: none; padding-left: 0; }
-                @media (max-width: 767px) {
-                    .tonka-landing .feature-col { border-left: none; border-top: 1px solid var(--line); padding: 1.75rem 0 0; margin-top: 1.75rem; }
-                    .tonka-landing .feature-col:first-child { border-top: none; margin-top: 0; padding-top: 0; }
-                }
-                .tonka-landing .feature-icon { color: var(--violet); margin-bottom: 1rem; }
-
-                .tonka-landing footer { border-top: 1px solid var(--line) !important; }
-                .tonka-landing footer a:hover { color: var(--text) !important; }
             `}</style>
 
-            { /** --- NAVBAR --- */}
-            <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent">
-                <div className="container">
-                    <a className="navbar-brand fw-bold d-flex align-items-center" href="https://github.com/clicalmani/astro">
-                        <FaRocket className="fa-solid me-2" style={{ color: "var(--gold)" }} />
-                        Tonka <span style={{ color: "var(--muted)", fontWeight: 400 }}>Astro</span>
-                    </a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav ms-auto align-items-lg-center">
-                            <li className="nav-item"><a className="nav-link" href="#features">Features</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#code">Code</a></li>
-                            <li className="nav-item ms-lg-3">
-                                <a href="https://github.com/clicalmani/astro" className="btn btn-outline-light rounded-3 px-4">GitHub</a>
-                            </li>
-                            <li className="nav-item ms-2">
-                                <a href="https://clicalmani.github.io/tonka" className="btn btn-primary rounded-3 px-4">Get started</a>
-                            </li>
-                        </ul>
+            {/** --- NAVBAR --- */}
+            <nav className="navbar fixed top-0 left-0 right-0 z-50 w-full">
+                <div className="container mx-auto px-4 max-w-6xl">
+                    <div className="flex items-center justify-between">
+                        <a className="flex items-center text-lg font-bold tracking-tight" href="https://github.com/clicalmani/astro">
+                            <FaRocket className="mr-2" style={{ color: "var(--gold)" }} />
+                            Tonka <span className="ml-1 font-normal" style={{ color: "var(--muted)" }}>Astro</span>
+                        </a>
+                        <button className="lg:hidden p-2 rounded-md" style={{ color: "var(--text)" }}>
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                        <div className="hidden lg:flex items-center gap-8">
+                            <a className="text-sm transition-colors" style={{ color: "var(--muted)" }} href="#features">Features</a>
+                            <a className="text-sm transition-colors" style={{ color: "var(--muted)" }} href="#code">Code</a>
+                            <a href="https://github.com/clicalmani/astro" className="border rounded-lg px-6 py-2 text-sm transition-colors" style={{ borderColor: "var(--line)", color: "var(--text)" }}>GitHub</a>
+                            <a href="https://clicalmani.github.io/tonka" className="rounded-lg px-6 py-2 text-sm font-semibold transition-colors" style={{ background: "var(--gold)", color: "var(--ink)" }}>Get started</a>
+                        </div>
                     </div>
                 </div>
             </nav>
 
-            { /** --- HERO SECTION --- */}
-            <header className="d-flex align-items-center min-vh-100 position-relative">
-                <div className="container position-relative">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6">
-                            <span className="eyebrow-badge px-3 py-2 rounded-3 mb-4">v1.10.5</span>
-                            <h1 className="hero-title fw-bold mb-4">
-                                A React frontend, <span className="accent">native</span> to PHP.
+            {/** --- HERO SECTION --- */}
+            <header className="flex items-center min-h-screen relative pt-24">
+                <div className="container mx-auto px-4 max-w-6xl relative">
+                    <div className="flex flex-col lg:flex-row items-center gap-12">
+                        <div className="w-full lg:w-1/2">
+                            <span className="inline-flex items-center border px-3 py-2 rounded-lg mb-6 text-sm" style={{ borderColor: "var(--line)", background: "var(--gold-soft)", color: "var(--gold)", fontFamily: "'JetBrains Mono', monospace" }}>v1.10.5</span>
+                            <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                                A React frontend, <span style={{ color: "var(--gold)" }}>native</span> to PHP.
                             </h1>
-                            <p className="text-muted mb-5" style={{ fontSize: "1.15rem", maxWidth: "34rem" }}>
+                            <p className="mb-10 text-lg max-w-xl" style={{ color: "var(--muted)" }}>
                                 Tonka Astro pairs your PHP backend with InertiaJS, typed routing, and DriftQL —
                                 so your React components talk to your database without a REST layer in between.
                             </p>
-                            <div className="d-flex gap-3">
-                                <a href="https://github.com/clicalmani/astro" className="btn btn-primary px-4 py-2">Read the docs</a>
-                                <a href="#code" className="btn btn-outline-light px-4 py-2">See a component</a>
+                            <div className="flex gap-4">
+                                <a href="https://github.com/clicalmani/astro" className="rounded-lg px-6 py-3 font-semibold transition-colors" style={{ background: "var(--gold)", color: "var(--ink)" }}>Read the docs</a>
+                                <a href="#code" className="border rounded-lg px-6 py-3 transition-colors" style={{ borderColor: "var(--line)", color: "var(--text)" }}>See a component</a>
                             </div>
                         </div>
-                        <div className="col-lg-6 d-none d-lg-block">
+                        <div className="hidden lg:block w-full lg:w-1/2">
                             <div className="constellation">
                                 <svg viewBox="0 0 400 260" preserveAspectRatio="none">
                                     <path className="constellation-line" d="M 100 60 C 220 60, 180 200, 300 200" />
@@ -320,7 +216,7 @@ export default function App() {
                                 <div className="constellation-node left">
                                     <img src="/logo.svg" alt="Tonka PHP" />
                                 </div>
-                                <span className="constellation-label" style={{ top: "122px", left: "18%" }}>bridged by Astro</span>
+                                <span className="absolute text-xs" style={{ top: "122px", left: "18%", color: "var(--muted)", fontFamily: "'JetBrains Mono', monospace" }}>bridged by Astro</span>
                                 <div className="constellation-node right">
                                     <img src="/react.svg" alt="React" />
                                 </div>
@@ -330,22 +226,22 @@ export default function App() {
                 </div>
             </header>
 
-            { /** --- MAGIC CODE SECTION (DriftQL Demo) --- */}
-            <section id="code" className="py-5 bg-darker">
-                <div className="container py-5">
-                    <div className="row align-items-start">
-                        <div className="col-lg-6 mb-5 mb-lg-0">
-                            <div className="code-editor shadow-lg">
-                                <div className="code-dots">
-                                    <div className="dot bg-danger"></div>
-                                    <div className="dot bg-warning"></div>
-                                    <div className="dot bg-success"></div>
-                                    <span className="ms-auto text-muted small ff-ms">UserList.tsx</span>
+            {/** --- MAGIC CODE SECTION --- */}
+            <section id="code" className="py-20" style={{ background: "var(--surface)" }}>
+                <div className="container mx-auto px-4 max-w-6xl py-12">
+                    <div className="flex flex-col lg:flex-row gap-12 items-start">
+                        <div className="w-full lg:w-1/2">
+                            <div className="rounded-xl overflow-hidden shadow-2xl" style={{ background: "var(--surface)", border: "1px solid var(--line)" }}>
+                                <div className="flex items-center gap-2 px-4 py-3" style={{ borderBottom: "1px solid var(--line)" }}>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                    <span className="ml-auto text-xs ff-ms" style={{ color: "var(--muted)" }}>UserList.tsx</span>
                                 </div>
                                 <pre
                                     ref={codeScrollRef}
-                                    className="m-0 p-4 ff-ms code-scroll"
-                                    style={{ maxHeight: "420px", overflowY: "auto", color: "var(--text)" }}
+                                    className="m-0 p-6 ff-ms code-scroll text-sm leading-relaxed"
+                                    style={{ maxHeight: "420px", overflowY: "auto", color: "var(--text)", background: "var(--surface)" }}
                                     onMouseEnter={() => { isPausedRef.current = true; }}
                                     onMouseLeave={() => { isPausedRef.current = false; }}
                                 >
@@ -353,25 +249,25 @@ export default function App() {
                                 </pre>
                             </div>
                         </div>
-                        <div className="col-lg-5 ms-lg-auto">
-                            <h2 className="h1 fw-bold mb-4">No more <span style={{ color: "var(--muted)" }}>useEffect</span> for data.</h2>
-                            <p className="text-muted fs-5 mb-4">
+                        <div className="w-full lg:w-5/12 lg:ml-auto">
+                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">No more <span style={{ color: "var(--muted)" }}>useEffect</span> for data.</h2>
+                            <p className="text-lg mb-8" style={{ color: "var(--muted)" }}>
                                 DriftQL exposes your database models as hooks. Query, mutate, and authorize
                                 from inside the component — no fetch calls, no duplicated endpoint logic.
                             </p>
                             <div>
-                                <div className="d-flex benefit-row">
-                                    <div className="me-3 benefit-icon"><FaBolt className="fa-solid fa-lg" /></div>
+                                <div className="flex py-4" style={{ borderBottom: "1px solid var(--line)" }}>
+                                    <div className="mr-4 flex-shrink-0" style={{ color: "var(--gold)" }}><FaBolt className="text-lg" /></div>
                                     <div>
-                                        <h5 className="fw-bold mb-1" style={{ fontSize: "1.05rem" }}>Auto-injection</h5>
-                                        <p className="text-muted small mb-0">Component props and attribute bindings are hydrated automatically from the model.</p>
+                                        <h5 className="font-bold mb-1 text-base">Auto-injection</h5>
+                                        <p className="text-sm mb-0" style={{ color: "var(--muted)" }}>Component props and attribute bindings are hydrated automatically from the model.</p>
                                     </div>
                                 </div>
-                                <div className="d-flex benefit-row">
-                                    <div className="me-3 benefit-icon"><FaShieldHalved className="fa-solid fa-lg" /></div>
+                                <div className="flex py-4">
+                                    <div className="mr-4 flex-shrink-0" style={{ color: "var(--gold)" }}><FaShieldHalved className="text-lg" /></div>
                                     <div>
-                                        <h5 className="fw-bold mb-1" style={{ fontSize: "1.05rem" }}>Policies, not middleware</h5>
-                                        <p className="text-muted small mb-0">Reads and writes go through Tonka's policy layer directly, without a duplicated API guard.</p>
+                                        <h5 className="font-bold mb-1 text-base">Policies, not middleware</h5>
+                                        <p className="text-sm mb-0" style={{ color: "var(--muted)" }}>Reads and writes go through Tonka's policy layer directly, without a duplicated API guard.</p>
                                     </div>
                                 </div>
                             </div>
@@ -380,53 +276,53 @@ export default function App() {
                 </div>
             </section>
 
-            { /** --- FEATURES GRID --- */}
-            <section id="features" className="py-5">
-                <div className="container py-5">
-                    <div className="mb-5" style={{ maxWidth: "34rem" }}>
-                        <h2 className="h1 fw-bold mb-3">What's in the box</h2>
-                        <p className="text-muted fs-5">
+            {/** --- FEATURES GRID --- */}
+            <section id="features" className="py-20">
+                <div className="container mx-auto px-4 max-w-6xl py-12">
+                    <div className="mb-12 max-w-xl">
+                        <h2 className="text-3xl lg:text-4xl font-bold mb-4">What's in the box</h2>
+                        <p className="text-lg" style={{ color: "var(--muted)" }}>
                             Three tools, wired together, so you're not the one gluing them.
                         </p>
                     </div>
-                    <div className="row g-4 g-md-0">
-                        <div className="col-md-4 feature-col">
-                            <div className="feature-icon"><FaReact className="fa-brands fa-2x" /></div>
-                            <h4 className="h5 fw-bold mb-2">React 18 + Vite</h4>
-                            <p className="text-muted mb-0">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
+                        <div className="md:px-7 md:border-l" style={{ borderColor: "var(--line)" }}>
+                            <div className="mb-4" style={{ color: "var(--violet)" }}><FaReact className="text-3xl" /></div>
+                            <h4 className="text-lg font-bold mb-2">React 18 + Vite</h4>
+                            <p className="mb-0" style={{ color: "var(--muted)" }}>
                                 Hot module replacement, code-splitting, and the current React feature set — configured, not scaffolded from scratch.
                             </p>
                         </div>
-                        <div className="col-md-4 feature-col">
-                            <div className="feature-icon"><FaPaperPlane className="fa-solid fa-2x" /></div>
-                            <h4 className="h5 fw-bold mb-2">InertiaJS routing</h4>
-                            <p className="text-muted mb-0">
+                        <div className="md:px-7 md:border-l" style={{ borderColor: "var(--line)" }}>
+                            <div className="mb-4" style={{ color: "var(--violet)" }}><FaPaperPlane className="text-3xl" /></div>
+                            <h4 className="text-lg font-bold mb-2">InertiaJS routing</h4>
+                            <p className="mb-0" style={{ color: "var(--muted)" }}>
                                 Server-driven page navigation without hand-rolling a REST contract between PHP and React.
                             </p>
                         </div>
-                        <div className="col-md-4 feature-col">
-                            <div className="feature-icon"><FaCodeBranch className="fa-solid fa-2x" /></div>
-                            <h4 className="h5 fw-bold mb-2">Typed route helpers</h4>
-                            <p className="text-muted mb-0">
+                        <div className="md:px-7 md:border-l" style={{ borderColor: "var(--line)" }}>
+                            <div className="mb-4" style={{ color: "var(--violet)" }}><FaCodeBranch className="text-3xl" /></div>
+                            <h4 className="text-lg font-bold mb-2">Typed route helpers</h4>
+                            <p className="mb-0" style={{ color: "var(--muted)" }}>
                                 Tonka Router generates named, typed route functions you call from inside your components.
                             </p>
                         </div>
                     </div>
-                    <div className="mt-5 pt-3">
-                        <a href="https://github.com/clicalmani/astro" className="btn btn-outline-light px-4 py-2">
-                            Explore the documentation <FaArrowRight className="fa-solid ms-2" style={{ fontSize: "0.8rem" }} />
+                    <div className="mt-12 pt-6">
+                        <a href="https://github.com/clicalmani/astro" className="inline-flex items-center border rounded-lg px-6 py-3 transition-colors" style={{ borderColor: "var(--line)", color: "var(--text)" }}>
+                            Explore the documentation <FaArrowRight className="ml-2 text-xs" />
                         </a>
                     </div>
                 </div>
             </section>
 
-            { /** --- FOOTER --- */}
-            <footer className="py-4 text-center">
-                <div className="container">
-                    <p className="text-muted mb-0 small">© 2026 Tonka Astro — built on React and PHP.</p>
-                    <div className="mt-2">
-                        <a href="https://github.com/clicalmani" className="text-muted mx-2 text-decoration-none"><FaGithub className="fa-brands" /></a>
-                        <a href="https://x.com/clicalmani" className="text-muted mx-2 text-decoration-none"><FaTwitter className="fa-brands" /></a>
+            {/** --- FOOTER --- */}
+            <footer className="py-8 text-center" style={{ borderTop: "1px solid var(--line)" }}>
+                <div className="container mx-auto px-4 max-w-6xl">
+                    <p className="text-sm mb-0" style={{ color: "var(--muted)" }}>© 2026 Tonka Astro — built on React and PHP.</p>
+                    <div className="mt-3">
+                        <a href="https://github.com/clicalmani" className="mx-2 inline-block transition-colors" style={{ color: "var(--muted)" }}><FaGithub /></a>
+                        <a href="https://x.com/clicalmani" className="mx-2 inline-block transition-colors" style={{ color: "var(--muted)" }}><FaTwitter /></a>
                     </div>
                 </div>
             </footer>

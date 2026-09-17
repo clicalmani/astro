@@ -128,13 +128,13 @@ return [
         /*
          * Tonka Framework Service Providers...
          */
-        Clicalmani\Foundation\Providers\ContainerServiceProvider::class,
-        Clicalmani\Foundation\Auth\AuthServiceProvider::class,
-        Clicalmani\Foundation\Providers\HelpersServiceProvider::class,
-        Clicalmani\Foundation\Auth\EncryptionServiceProvider::class,
-        Clicalmani\Foundation\Providers\RouteServiceProvider::class,
-        Clicalmani\Foundation\Providers\LogServiceProvider::class,
-        Clicalmani\Foundation\Providers\ValidationServiceProvider::class,
+        Clicalmani\Core\Providers\ContainerServiceProvider::class,
+        Clicalmani\Core\Auth\AuthServiceProvider::class,
+        Clicalmani\Core\Providers\HelpersServiceProvider::class,
+        Clicalmani\Core\Auth\EncryptionServiceProvider::class,
+        Clicalmani\Core\Providers\RouteServiceProvider::class,
+        Clicalmani\Core\Providers\LogServiceProvider::class,
+        Clicalmani\Core\Providers\ValidationServiceProvider::class,
         Inertia\InertiaServiceProvider::class,
         Tonka\Spark\SparkServiceProvider::class,
         Tonka\DriftQL\DriftQLServiceProvider::class,

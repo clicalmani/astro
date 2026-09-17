@@ -1,8 +1,8 @@
 <?php
 namespace App\Providers;
 
-use Clicalmani\Foundation\Providers\RouteServiceProvider as ServiceProvider;
-use Clicalmani\Foundation\Support\Facades\Route;
+use Clicalmani\Core\Providers\RouteServiceProvider as ServiceProvider;
+use Clicalmani\Core\Support\Facades\Route;
 
 /**
  * Class RouteServiceProvider

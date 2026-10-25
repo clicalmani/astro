@@ -49,7 +49,7 @@ return [
     |
     */
     'routing' => [
-        // ...
+        // Example: \App\Messages\MyMessage::class => 'elegant',
     ],
 
     /*
@@ -109,6 +109,8 @@ return [
     | the queue name, retry attempts, and whether to keep messages after processing.
     |
     */
+    'message_table' => env('MESSENGER_MESSAGE_TABLE', 'messenger_messages'),
+    'failed_table' => env('MESSENGER_FAILED_TABLE', 'messenger_failed'),
     'queue_name' => env('MESSENGER_QUEUE_NAME', 'default'),
     'retries' => env('MESSENGER_RETRIES', 3),
     'keep' => false

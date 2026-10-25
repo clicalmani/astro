@@ -1,6 +1,48 @@
 <?php
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | Slow Query Threshold
+    |--------------------------------------------------------------------------
+    |
+    | Threshold in milliseconds above which a query is considered slow.
+    | Slow queries emit a `db.slow_query` metric and are logged.
+    | Set to 0 to disable.
+    |
+    */
+
+    'slow_query_threshold' => env('DB_SLOW_QUERY_THRESHOLD', 500),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Profiling
+    |--------------------------------------------------------------------------
+    |
+    | When enabled, `SET PROFILING = 1` is issued at boot and every query
+    | captures its profile. This is expensive — enable only in local
+    | development or targeted debugging.
+    |
+    | Note: `SHOW PROFILE` was deprecated in MySQL 5.7 and removed in 8.0.
+    | On MySQL 8+, use EXPLAIN ANALYZE instead.
+    |
+    */
+
+    'profiling_enabled' => env('DB_PROFILING_ENABLED', true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Auto-profile Slow Queries
+    |--------------------------------------------------------------------------
+    |
+    | When enabled, a slow query is automatically re-executed under profile
+    | to capture its phase breakdown. Requires `profiling_enabled` or
+    | will toggle profiling for that single query.
+    |
+    */
+
+    'profile_slow_queries' => env('DB_PROFILE_SLOW_QUERIES', true),
+
     /**
      * |-----------------------------------------------------------------------
      * | Enable Foreign Key Check
@@ -58,7 +100,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'url' => env('DATABASE_URL'),
+            'url' => env('DB_URL'),
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
@@ -75,6 +117,40 @@ return [
             'collation' => 'utf8mb4_unicode_520_ci',
             'prefix'    => env('DB_TABLE_PREFIX', ''),
             'engine'    => null
+        ],
+
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'default',
+            'engine' => null,
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'search_path' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'SQL_Latin1_General_CP1_CI_AS',
+            'engine' => null,
+            'prefix' => '',
+            'prefix_indexes' => true,
+            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
     ]
 ];

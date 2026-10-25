@@ -3,72 +3,37 @@ namespace App\Models;
 
 use Clicalmani\Core\Acme\Model;
 
-/**
- * Class User
- *
- * Model representing user accounts, handling authorization roles, parameter hashes,
- * and mapping to the underlying users database entity.
- *
- * @package App\Models
- * @author Clicalmani
- */
 class User extends Model
 {
     /**
-     * Associated database table name with default alias.
+     * Model database table 
      *
-     * @var string Table name
+     * @var string $table Table name
      */
-    protected string $table = "users AS u";
+    protected string $table = "users";
 
     /**
-     * Fully qualified class name of the associated entity.
+     * Model entity
      * 
-     * @var string Entity class
+     * @var string
      */
     protected string $entity = \Database\Entities\UserEntity::class;
 
     /**
-     * Primary key(s) for the table.
+     * Table primary key(s)
+     * Use an array if the key is composed with more than one attributes.
      *
-     * @var string|array Primary key attribute name or composite keys array
+     * @var string|array $primary_keys Table primary key.
      */
     protected string|array $primaryKey = "id";
 
     /**
-     * Attributes hidden from array or JSON serialized representations.
-     * 
-     * @var array
-     */
-    protected array $hidden = ['password', 'login_count', 'state'];
-
-    /**
-     * User model constructor.
+     * Constructor 
      *
-     * @param mixed $id Optional primary key value to load model record
+     * @param mixed $id
      */
     public function __construct(mixed $id = null)
     {
         parent::__construct($id);
-    }
-
-    /**
-     * Retrieve the authorization role assigned to the user.
-     * 
-     * @return string User role identifier
-     */
-    public function role(): string
-    {
-        return 'admin';
-    }
-
-    /**
-     * Generate a parameter hash representing the user profile instance.
-     * 
-     * @return string Hashed parameters payload
-     */
-    public function hash(): string
-    {
-        return create_parameters_hash(['profile' => $this->id]);
     }
 }

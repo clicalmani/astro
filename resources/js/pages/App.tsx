@@ -5,44 +5,44 @@ import { FaShieldHalved } from "react-icons/fa6";
 export default function App() {
 
     const codeSnippet = `<span class="text-primary">// components/UserList.tsx</span>
-<span class="text-primary">import</span> { useElegant } <span class="text-primary">from</span> <span class="text-success">'driftql-react'</span>;
+        <span class="text-primary">import</span> { useElegant } <span class="text-primary">from</span> <span class="text-success">'driftql-react'</span>;
 
-<span class="text-blue-400">interface</span> <span class="text-warning">User</span> {
-  id: <span class="text-blue-400">number</span>;
-  name: <span class="text-blue-400">string</span>;
-  email: <span class="text-blue-400">string</span>;
-}
+        <span class="text-blue-400">interface</span> <span class="text-warning">User</span> {
+        id: <span class="text-blue-400">number</span>;
+        name: <span class="text-blue-400">string</span>;
+        email: <span class="text-blue-400">string</span>;
+        }
 
-<span class="text-blue-400">function</span> <span class="text-warning">UserList</span>() {
-  <span class="text-blue-400">const</span> { all, find, delete: deleteUser } = <span class="text-warning">useElegant</span>&lt;<span class="text-warning">User</span>&gt;(<span class="text-success">'User'</span>);
-  <span class="text-blue-400">const</span> [users, setUsers] = <span class="text-warning">useState</span>&lt;<span class="text-warning">User</span>[]&gt;([]);
-  <span class="text-blue-400">const</span> [loading, setLoading] = <span class="text-warning">useState</span>(<span class="text-blue-400">false</span>);
+        <span class="text-blue-400">function</span> <span class="text-warning">UserList</span>() {
+        <span class="text-blue-400">const</span> { all, find, delete: deleteUser } = <span class="text-warning">useElegant</span>&lt;<span class="text-warning">User</span>&gt;(<span class="text-success">'User'</span>);
+        <span class="text-blue-400">const</span> [users, setUsers] = <span class="text-warning">useState</span>&lt;<span class="text-warning">User</span>[]&gt;([]);
+        <span class="text-blue-400">const</span> [loading, setLoading] = <span class="text-warning">useState</span>(<span class="text-blue-400">false</span>);
 
-  <span class="text-warning">useEffect</span>(() => {
-    <span class="text-warning">setLoading</span>(<span class="text-blue-400">true</span>);
-    <span class="text-warning">all</span>()
-      .<span class="text-warning">then</span>(setUsers)
-      .<span class="text-warning">finally</span>(() => <span class="text-warning">setLoading</span>(<span class="text-blue-400">false</span>));
-  }, []);
+        <span class="text-warning">useEffect</span>(() => {
+            <span class="text-warning">setLoading</span>(<span class="text-blue-400">true</span>);
+            <span class="text-warning">all</span>()
+            .<span class="text-warning">then</span>(setUsers)
+            .<span class="text-warning">finally</span>(() => <span class="text-warning">setLoading</span>(<span class="text-blue-400">false</span>));
+        }, []);
 
-  <span class="text-blue-400">const</span> <span class="text-warning">handleDelete</span> = <span class="text-blue-400">async</span> (id: <span class="text-blue-400">number</span>) => {
-    <span class="text-blue-400">await</span> <span class="text-warning">deleteUser</span>(id);
-    <span class="text-warning">setUsers</span>(users.<span class="text-warning">filter</span>(u => u.id !== id));
-  };
+        <span class="text-blue-400">const</span> <span class="text-warning">handleDelete</span> = <span class="text-blue-400">async</span> (id: <span class="text-blue-400">number</span>) => {
+            <span class="text-blue-400">await</span> <span class="text-warning">deleteUser</span>(id);
+            <span class="text-warning">setUsers</span>(users.<span class="text-warning">filter</span>(u => u.id !== id));
+        };
 
-  <span class="text-blue-400">if</span> (loading) <span class="text-blue-400">return</span> &lt;<span class="text-danger">div</span>&gt;Loading...&lt;/<span class="text-danger">div</span>&gt;;
+        <span class="text-blue-400">if</span> (loading) <span class="text-blue-400">return</span> &lt;<span class="text-danger">div</span>&gt;Loading...&lt;/<span class="text-danger">div</span>&gt;;
 
-  <span class="text-blue-400">return</span> (
-    &lt;<span class="text-danger">ul</span>&gt;
-      {users.<span class="text-warning">map</span>(user => (
-        &lt;<span class="text-danger">li</span> key={user.id}&gt;
-          {user.name} - {user.email}
-          &lt;<span class="text-danger">button</span> onClick={() => <span class="text-warning">handleDelete</span>(user.id)}&gt;Delete&lt;/<span class="text-danger">button</span>&gt;
-        &lt;/<span class="text-danger">li</span>&gt;
-      ))}
-    &lt;/<span class="text-danger">ul</span>&gt;
-  );
-}`;
+        <span class="text-blue-400">return</span> (
+            &lt;<span class="text-danger">ul</span>&gt;
+            {users.<span class="text-warning">map</span>(user => (
+                &lt;<span class="text-danger">li</span> key={user.id}&gt;
+                {user.name} - {user.email}
+                &lt;<span class="text-danger">button</span> onClick={() => <span class="text-warning">handleDelete</span>(user.id)}&gt;Delete&lt;/<span class="text-danger">button</span>&gt;
+                &lt;/<span class="text-danger">li</span>&gt;
+            ))}
+            &lt;/<span class="text-danger">ul</span>&gt;
+        );
+        }`;
 
     // --- Navbar scroll effect ---
     useEffect(() => {
@@ -88,85 +88,7 @@ export default function App() {
 
     return (
         <div className="tonka-landing min-h-screen">
-            <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
-                .tonka-landing {
-                    --ink: #0D1321;
-                    --surface: #141B2E;
-                    --surface-2: #1B2438;
-                    --line: rgba(241, 237, 228, 0.09);
-                    --text: #F1EDE4;
-                    --muted: #8C93A8;
-                    --gold: #E8A33D;
-                    --gold-soft: rgba(232, 163, 61, 0.12);
-                    --violet: #6C7FE0;
-
-                    background: var(--ink);
-                    color: var(--text);
-                    font-family: 'Inter', sans-serif;
-                }
-
-                .tonka-landing h1, .tonka-landing h2, .tonka-landing h4, .tonka-landing h5 {
-                    font-family: 'Space Grotesk', sans-serif;
-                    letter-spacing: -0.01em;
-                }
-
-                .tonka-landing .ff-ms { font-family: 'JetBrains Mono', monospace; }
-
-                /* --- Navbar --- */
-                .tonka-landing .navbar {
-                    padding: 1.35rem 0;
-                    border-bottom: 1px solid transparent;
-                    transition: background-color .25s ease, border-color .25s ease, padding .25s ease;
-                }
-                .tonka-landing .navbar.scrolled {
-                    background-color: rgba(13, 19, 33, 0.88);
-                    backdrop-filter: blur(14px);
-                    -webkit-backdrop-filter: blur(14px);
-                    border-bottom-color: var(--line);
-                    padding: 0.85rem 0;
-                }
-
-                /* --- Constellation --- */
-                .tonka-landing .constellation {
-                    position: relative;
-                    width: 100%;
-                    height: 260px;
-                }
-                .tonka-landing .constellation svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-                .tonka-landing .constellation-line {
-                    stroke: var(--violet);
-                    stroke-width: 1.5;
-                    stroke-dasharray: 4 7;
-                    fill: none;
-                    opacity: 0.55;
-                    animation: dash-move 22s linear infinite;
-                }
-                @keyframes dash-move { to { stroke-dashoffset: -400; } }
-                .tonka-landing .constellation-node {
-                    position: absolute;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 96px;
-                    height: 96px;
-                    border-radius: 20px;
-                    background: var(--surface);
-                    border: 1px solid var(--line);
-                }
-                .tonka-landing .constellation-node img { width: 44px; height: 44px; }
-                .tonka-landing .constellation-node.left { top: 18px; left: 8%; }
-                .tonka-landing .constellation-node.right { bottom: 18px; right: 8%; }
-
-                /* --- Code scrollbar --- */
-                .code-scroll::-webkit-scrollbar { width: 8px; }
-                .code-scroll::-webkit-scrollbar-track { background: transparent; }
-                .code-scroll::-webkit-scrollbar-thumb { background-color: rgba(241, 237, 228, 0.12); border-radius: 4px; }
-                .code-scroll::-webkit-scrollbar-thumb:hover { background-color: rgba(241, 237, 228, 0.22); }
-                .code-scroll { scrollbar-width: thin; scrollbar-color: rgba(241, 237, 228, 0.12) transparent; }
-            `}</style>
-
+            
             {/** --- NAVBAR --- */}
             <nav className="navbar fixed top-0 left-0 right-0 z-50 w-full">
                 <div className="container mx-auto px-4 max-w-6xl">
@@ -195,7 +117,7 @@ export default function App() {
                 <div className="container mx-auto px-4 max-w-6xl relative">
                     <div className="flex flex-col lg:flex-row items-center gap-12">
                         <div className="w-full lg:w-1/2">
-                            <span className="inline-flex items-center border px-3 py-2 rounded-lg mb-6 text-sm" style={{ borderColor: "var(--line)", background: "var(--gold-soft)", color: "var(--gold)", fontFamily: "'JetBrains Mono', monospace" }}>v1.10.5</span>
+                            <span className="inline-flex items-center border px-3 py-2 rounded-lg mb-6 text-sm" style={{ borderColor: "var(--line)", background: "var(--gold-soft)", color: "var(--gold)", fontFamily: "'JetBrains Mono', monospace" }}>v1.11.0</span>
                             <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                                 A React frontend, <span style={{ color: "var(--gold)" }}>native</span> to PHP.
                             </h1>

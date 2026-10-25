@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Inertia – TONKA Astro</title>
 		<meta charset="utf-8" />
         @reactRefresh
         @vite('resources/css/app.css', 'resources/js/main.tsx')
@@ -13,7 +12,7 @@
         @routes
         @inertia
         <script>
-        // Polyfill for process
+        // Polyfill pour process
         if (typeof window !== 'undefined' && !window.process) {
             window.process = { 
             env: { 

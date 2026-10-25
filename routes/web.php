@@ -1,6 +1,5 @@
 <?php
 
-use Clicalmani\Core\Http\RequestInterface;
 use Clicalmani\Core\Support\Facades\Route;
 
 /**
@@ -11,9 +10,7 @@ use Clicalmani\Core\Support\Facades\Route;
  * Routes without authentication should go here before the middleware.
  */
 
-Route::get('/', static function (RequestInterface $request) {
-    return inertia('App');
-})->name('home');
+Route::get('/', static fn () => inertia('App'))->name('home');
 
 /**
  * |-------------------------------------------------------------------------------

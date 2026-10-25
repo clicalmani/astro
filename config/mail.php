@@ -38,11 +38,27 @@ return [
     'mailers' => [
 
         'smtp' => [
-            'scheme' => env('MAIL_MAILER', 'smtp'),
+            'schema' => env('MAIL_MAILER', 'smtp'),
             'host' => env('MAIL_HOST', '127.0.0.1'),
             'port' => env('MAIL_PORT', 2525),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD')
+        ],
+
+        'postmark' => [
+            'schema' => 'postmark+smtp',
+            'host' => 'default',
+            'port' => null,
+            'username' => 'ID',
+            'password' => null
+        ],
+
+        'resend' => [
+            'schema' => 'resend+smtp',
+            'host' => 'default',
+            'port' => null,
+            'username' => 'resend',
+            'password' => 'API_KEY'
         ],
 
         'sendmail' => [
@@ -67,7 +83,12 @@ return [
             ],
         ],
 
+        'null' => [
+            'schema' => 'array'
+        ]
     ],
+
+    'default_layout' => 'base',
 
     /*
     |--------------------------------------------------------------------------

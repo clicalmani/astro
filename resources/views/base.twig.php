@@ -5,11 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tonka Astro - {% block title %}{% endblock %}</title>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    {% block head %}{% endblock %}
+    {% block head %}
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'tonka': {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b', // Amber
+                            600: '#d97706',
+                            700: '#b45309',
+                            900: '#451a03'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    {% endblock %}
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-tonka-200 selection:text-tonka-900">
 

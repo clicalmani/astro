@@ -19,7 +19,7 @@ class SessionServiceProvider extends SessionProvider
      * 
      * @var string
      */
-    protected static string $driver = \Clicalmani\Core\Http\Session\FileSessionHandler::class;
+    protected static string $driver = \Clicalmani\Core\Http\Session\DBSessionHandler::class;
 
     /**
      * The number of seconds a session is allowed to remain idle before expiring.
@@ -41,13 +41,29 @@ class SessionServiceProvider extends SessionProvider
      * @var bool
      */
     protected static bool $expire_on_close = false;
+
+    /**
+     * Map block defining browser tracking cookie policies and boundary visibility controls.
+     * 
+     * @var array
+     */
+    protected static array $cookie = [
+        'name'      => '__SESSION_COOKIE__',
+        'path'      => '/',
+        'domain'    => '',
+        'secure'    => false,
+        'http_only' => true,
+        'samesite'  => true
+    ];
     
     /**
      * Bootstrap session storage services and underlying framework provider logic.
      * 
      * @return void
      */
-    public function boot(): void
+    public function boot(
+        ?\Clicalmani\Core\Acme\Container $container = null
+    ): void
     {
         parent::boot();
     }

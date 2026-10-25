@@ -26,7 +26,7 @@ class CookieDetector extends Middleware
      */
     public function handle(RequestInterface $request, ResponseInterface $response, \Closure $next) : \Clicalmani\Core\Http\ResponseInterface|\Clicalmani\Core\Http\RedirectInterface
     {
-        if ($session_id = $request->cookie()->get('_SESSION_COOKIE')) {
+        if ($session_id = $request->cookie()->get('__SESSION_COOKIE__')) {
             $session = new \Clicalmani\Core\Http\Session\DBSessionHandler(false, [
                 'driver' => 'mysql', 
                 'table'  => env('DB_TABLE_PREFIX') . 'sessions'

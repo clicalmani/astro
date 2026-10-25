@@ -15,7 +15,7 @@ return [
     | A secret key that the front-end must provide to access the DriftQL bridge.
     | This is an additional layer of security to prevent unauthorized access.
     */
-    'bridge_public_key' => 'd3597f10e13310490809c832b898445e88face0bb7635b846d1b651f62417a29',
+    'bridge_public_key' => env('DRIFTQL_BRIDGE_PUBLIC_KEY', 'default_public_key'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,27 +54,7 @@ return [
                 'value' => 'admin', 
                 // Note: 'value' can also be 'current_user_id' for dynamic values
             ],
-            
-            // Les utilisateurs standards ne voient qu'eux-mêmes
-            'user' => [
-                'column' => 'id',
-                'operator' => '=',
-                'value' => 'current_user_id',
-            ],
-
-            // 'store' => \App\Http\Requests\UserUpdateRequest::class,
-
-            // 'password_verify' => \App\Http\Requests\UserUpdateRequest::class,
         ],
-
-        /**
-         * |--------------------------------------------------------------------------
-         * | MODEL-POLICY FOR STORAGE OPERATIONS
-         * |--------------------------------------------------------------------------
-         * Defines the Request class that handles authorization and validation for "store", 
-         * "update", or "destroy" operations on each model.
-         */
-        
     ],
 
     /*

@@ -16,4 +16,5 @@
 return \Clicalmani\Core\Maker\Application::setup(rootPath: dirname(__DIR__))
             ->withMailer()
             ->withInertia()
+            ->withEvents()
             ->run();

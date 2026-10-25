@@ -34,7 +34,9 @@ class RouteServiceProvider extends ServiceProvider
      * 
      * @return void
      */
-    public function boot(): void
+    public function boot(
+        ?\Clicalmani\Core\Acme\Container $container = null
+    ): void
     {
         $this->routes(function() {
             if (Route::isApi()) {

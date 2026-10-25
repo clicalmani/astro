@@ -34,6 +34,8 @@ return [
             'driver' => 'mercure',
             'url'    => env('MERCURE_HUB_URL', 'http://localhost:3000/.well-known/mercure'),
             'token'  => env('MERCURE_JWT_TOKEN', ''),
+            'secret' => env('MERCURE_JWT_SECRET'),
+            'ttl'    => (int) env('MERCURE_JWT_TTL', 900),
         ],
         
         'log' => [
@@ -46,4 +48,5 @@ return [
 
     ],
 
+    'auth_prefix' => env('BROADCAST_AUTH_PREFIX', 'broadcasting'),
 ];

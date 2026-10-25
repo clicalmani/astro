@@ -2,39 +2,52 @@
 namespace Database\Entities;
 
 use Clicalmani\Database\DataTypes\Char;
+use Clicalmani\Database\DataTypes\Date;
 use Clicalmani\Database\DataTypes\Enum;
 use Clicalmani\Database\DataTypes\Integer;
 use Clicalmani\Database\DataTypes\TinyInt;
 use Clicalmani\Database\DataTypes\VarChar;
 use Clicalmani\Database\Factory\Entity;
+use Clicalmani\Database\Factory\Index;
 use Clicalmani\Database\Factory\PrimaryKey;
 use Clicalmani\Database\Factory\Property;
-use Clicalmani\Database\Factory\Validate;
 
+#[Index(
+    name: 'userUNIQUE',
+    key: 'username',
+    unique: true
+), Index(
+    name: 'phoneUNIQUE',
+    key: 'phone',
+    unique: true
+), Index(
+    name: 'emailUNIQUE',
+    key: 'email',
+    unique: true
+)]
 class UserEntity extends Entity
 {
     #[Property(
         length: 10,
         unsigned: true,
-        nullable: false,
         autoIncrement: true
     ), PrimaryKey]
-    public Integer $id;
+    public Integer $id; 
 
     #[Property(
-        length: 191
+        length: 255
     )]
-    public ?VarChar $given_name;
-    
-    #[Property(
-        length: 191
-    )]
-    public ?VarChar $family_name;
+    public VarChar $username;
 
     #[Property(
-        length: 200
+        length: 255
     )]
-    public ?VarChar $email;
+    public VarChar $first_name;
+
+    #[Property(
+        length: 255
+    )]
+    public VarChar $last_name;
 
     #[Property(
         length: 10
@@ -42,33 +55,26 @@ class UserEntity extends Entity
     public ?Char $phone;
 
     #[Property(
-        values: ['male', 'femail']
-    )]
-    public Enum|string|null $gender = 'male';
-
-    #[Property(
         length: 191
-    ), Validate('required|password|hash|min:8')]
-    public VarChar $password;
+    )]
+    public VarChar $email;
+
+    #[Property()]
+    public ?Date $birth_day;
 
     #[Property(
-        values: ['lock', 'unlock']
+        values: ['male', 'female']
     )]
-    public Enum|string $state = 'lock';
+    public Enum|string $gender = 'male';
 
     #[Property(
         length: 3,
         unsigned: true
     )]
-    public TinyInt|int $login_count = 0;
+    public TinyInt|int $max_loans_allowed = 5;
 
-    // ── Custom Properties ──────────────────────────────────────────────────────
-
-    public string $role {
-        get => $this->model->role;
-    }
-
-    public string $hash {
-        get => $this->model->hash;
-    }
+    #[Property(
+        length: 100
+    )]
+    public VarChar $password;
 }

@@ -1,0 +1,13 @@
+[25-Oct-2026 11:09:40 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Collection" not found in C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Collection\Collection.php:14
+Stack trace:
+#0 C:\Users\WORKSPACE\Documents\astro\vendor\composer\ClassLoader.php(576): include()
+#1 C:\Users\WORKSPACE\Documents\astro\vendor\composer\ClassLoader.php(427): {closure:Composer\Autoload\ClassLoader::initializeIncludeClosure():575}('C:\\Users\\WORKSP...')
+#2 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\helpers.php(330): Composer\Autoload\ClassLoader->loadClass('Clicalmani\\Core...')
+#3 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Providers\ValidationServiceProvider.php(34): collection(Array)
+#4 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Providers\ServiceProvider.php(83): Clicalmani\Core\Providers\ValidationServiceProvider->boot()
+#5 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Providers\ServiceProvider.php(67): Clicalmani\Core\Providers\ServiceProvider::provideService('Clicalmani\\Core...')
+#6 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Maker\Application.php(429): Clicalmani\Core\Providers\ServiceProvider::provideServices(Array)
+#7 C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Maker\Application.php(200): Clicalmani\Core\Maker\Application->boot()
+#8 C:\Users\WORKSPACE\Documents\astro\tonka(12): Clicalmani\Core\Maker\Application->handleCommands()
+#9 {main}
+  thrown in C:\Users\WORKSPACE\Documents\astro\vendor\clicalmani\foundation\src\Collection\Collection.php on line 14

@@ -31,8 +31,12 @@ class AppServiceProvider extends ServiceProvider
      * 
      * @return void
      */
-    public function boot(): void
+    public function boot(
+        ?\Clicalmani\Core\Acme\Container $container = null
+    ): void
     {
+        Inertia::version(str_shuffle( time() ));
+        
         Inertia::share(static function(RequestInterface $request) {
             return [
                 // Global shared data across Inertia views

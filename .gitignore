@@ -3,8 +3,6 @@ composer.lock
 package-lock.json
 /vendor
 .env
-.env.local
-.env.*.local
 .idea
 .vscode
 .DS_Store

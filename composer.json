@@ -1,7 +1,7 @@
 {
     "name": "tonka/astro",
     "type": "project",
-    "version": "1.11.0",
+    "version": "1.11.1",
     "description": "Tonka Framework InertiaJs ReactJs Starter Kit",
     "keywords": ["framework", "tonka", "InertiaJs", "ReactJs"],
     "license": "MIT",
